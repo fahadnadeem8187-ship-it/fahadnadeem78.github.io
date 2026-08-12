@@ -17,25 +17,13 @@
     overflow:hidden;
   }
 
-  /* Lock screen */
-  #lockScreen{
-    position:fixed;inset:0;display:flex;align-items:center;justify-content:center;
-    background: linear-gradient(180deg,#93c5fd, #60a5fa);
-    color:white;z-index:100;
-    flex-direction:column;
-  }
-  #lockCard{
-    background: rgba(255,255,255,0.15);backdrop-filter: blur(8px);
-    padding:28px;border-radius:14px;text-align:center;box-shadow:0 8px 30px rgba(0,0,0,0.2);
-    width:320px;
-  }
+  /* Lock screen (unused after removal) */
+  #lockScreen{position:fixed;inset:0;display:flex;align-items:center;justify-content:center;background: linear-gradient(180deg,#93c5fd, #60a5fa);color:white;z-index:100;flex-direction:column}
+  #lockCard{background: rgba(255,255,255,0.15);backdrop-filter: blur(8px);padding:28px;border-radius:14px;text-align:center;box-shadow:0 8px 30px rgba(0,0,0,0.2);width:320px}
   h1.lockTitle{margin:0 0 8px;font-size:20px;letter-spacing:1px}
   .passRow{display:flex;gap:8px;margin:12px 0;justify-content:center}
-  input.pass{width:56px;height:56px;border-radius:10px;border:none;text-align:center;font-size:24px;outline:none;}
-  button.unlockBtn{
-    background:#fff;color:#2563eb;border:none;padding:10px 16px;border-radius:10px;font-weight:700;
-    cursor:pointer;font-size:16px;
-  }
+  input.pass{width:56px;height:56px;border-radius:10px;border:none;text-align:center;font-size:24px;outline:none}
+  button.unlockBtn{background:#fff;color:#2563eb;border:none;padding:10px 16px;border-radius:10px;font-weight:700;cursor:pointer;font-size:16px}
 
   /* Celebration page */
   #celebration{
@@ -65,72 +53,38 @@
   @keyframes floatUp{from{transform:translateY(100vh) rotate(-8deg)} to{transform:translateY(-30vh) rotate(8deg)}}
 
   /* Modal Letter */
-  .modal{
-    position:fixed;inset:0;background:rgba(11,15,30,0.55);display:none;align-items:center;justify-content:center;z-index:120;
-  }
-  .card{
-    background:var(--card);padding:26px;border-radius:16px;width:clamp(300px,85%,550px);box-shadow:0 20px 60px rgba(2,6,23,0.2);
-    text-align:left;color:#111;
-  }
-  .card h2{margin-top:0;color:#ff6b6b;}
-  .card p{line-height:1.6;color:#333;font-size:16px;}
+  .modal{position:fixed;inset:0;background:rgba(11,15,30,0.55);display:none;align-items:center;justify-content:center;z-index:120}
+  .card{background:var(--card);padding:26px;border-radius:16px;width:clamp(300px,85%,550px);box-shadow:0 20px 60px rgba(2,6,23,0.2);text-align:left;color:#111}
+  .card h2{margin-top:0;color:#ff6b6b}
+  .card p{line-height:1.6;color:#333;font-size:16px}
 
   /* Cake area */
   #cakeScreen{position:fixed;inset:0;display:none;align-items:center;justify-content:center;z-index:50;padding:30px;flex-direction:column}
-  .cakeWrap{position:relative;display:flex;align-items:center;flex-direction:column;gap:12px;}
-  .tier{
-    background:linear-gradient(180deg,#fff,#ffe6d6);border-radius:12px;padding:10px 20px;box-shadow:0 6px 18px rgba(0,0,0,0.12);
-    display:flex;align-items:center;justify-content:center;position:relative;
-  }
+  .cakeWrap{position:relative;display:flex;align-items:center;flex-direction:column;gap:12px}
+  .tier{background:linear-gradient(180deg,#fff,#ffe6d6);border-radius:12px;padding:10px 20px;box-shadow:0 6px 18px rgba(0,0,0,0.12);display:flex;align-items:center;justify-content:center;position:relative}
   .tier.small{width:180px;height:70px;border-radius:12px}
   .tier.large{width:280px;height:100px;border-radius:18px}
-  .icing{position:absolute;left:0;right:0;height:20px;background:linear-gradient(180deg,#fffbf5,#ffeedd);top:0;border-radius:12px 12px 0 0;}
-  
-  .candleRow{display:flex;gap:12px;position:absolute;top:-35px;z-index:10;}
+  .icing{position:absolute;left:0;right:0;height:20px;background:linear-gradient(180deg,#fffbf5,#ffeedd);top:0;border-radius:12px 12px 0 0}
+  .candleRow{display:flex;gap:12px;position:absolute;top:-35px;z-index:10}
   .candle{position:relative;width:12px;height:35px;background:linear-gradient(180deg,#ffd89b,#ffb74d);border-radius:3px;cursor:pointer}
-  .flame{
-    position:absolute;top:-16px;left:50%;transform:translateX(-50%);width:12px;height:16px;border-radius:50% 50% 20% 20%;
-    background: radial-gradient(circle at 30% 30%, #fff7a8, #ffcf44 40%, #ff7a18 90%);
-    filter:drop-shadow(0 2px 6px rgba(255,140,30,0.6));animation:flameFlicker 220ms infinite alternate;
-  }
+  .flame{position:absolute;top:-16px;left:50%;transform:translateX(-50%);width:12px;height:16px;border-radius:50% 50% 20% 20%;background: radial-gradient(circle at 30% 30%, #fff7a8, #ffcf44 40%, #ff7a18 90%);filter:drop-shadow(0 2px 6px rgba(255,140,30,0.6));animation:flameFlicker 220ms infinite alternate}
   @keyframes flameFlicker{0%{transform:translateX(-50%) scaleY(1)}100%{transform:translateX(-50%) scaleY(1.1)}}
-  .flame.out{display:none;}
+  .flame.out{display:none}
 
-  .cutBtn{margin-top:18px;background:#fff;border:2px solid #ff7a18;padding:12px 20px;border-radius:12px;font-weight:800;color:#ff4a00;cursor:pointer;display:none;font-size:16px;}
-  .knife{font-size:45px;cursor:pointer;display:none;margin-top:10px;animation:knifeBounce 1s infinite alternate;}
-  @keyframes knifeBounce{0%{transform:translateY(0);} 100%{transform:translateY(-10px);}}
-
-  .lyrics{margin-top:18px;color:#111;background:rgba(255,255,255,0.85);padding:12px 20px;border-radius:10px;display:none;font-weight:700;}
+  .cutBtn{margin-top:18px;background:#fff;border:2px solid #ff7a18;padding:12px 20px;border-radius:12px;font-weight:800;color:#ff4a00;cursor:pointer;display:none;font-size:16px}
+  .knife{font-size:45px;cursor:pointer;display:none;margin-top:10px;animation:knifeBounce 1s infinite alternate}
+  @keyframes knifeBounce{0%{transform:translateY(0)} 100%{transform:translateY(-10px)}}
+  .lyrics{margin-top:18px;color:#111;background:rgba(255,255,255,0.85);padding:12px 20px;border-radius:10px;display:none;font-weight:700}
 
   /* balloon pop game */
-  #balloonGame{position:fixed;inset:0;display:none;align-items:center;justify-content:center;z-index:70;padding:10px;background:#1e1b4b;color:#fff;}
-  .gameArea{position:relative;width:100%;height:100%;overflow:hidden;display:flex;align-items:center;justify-content:center;gap:20px;flex-wrap:wrap;}
-  .gameBalloon{
-    width:75px;height:100px;border-radius:50% 50% 45% 45%;display:flex;align-items:center;justify-content:center;cursor:pointer;
-    box-shadow: inset -8px -10px 22px rgba(255,255,255,0.2);position:relative;
-  }
-  
-  #finalMsg{position:fixed;inset:0;display:none;align-items:center;justify-content:center;z-index:200;flex-direction:column;padding:30px;background:#0f172a;color:#fff;}
-  #finalMsg h1{font-size:36px;margin:0;color:#facc15;text-align:center;}
+  #balloonGame{position:fixed;inset:0;display:none;align-items:center;justify-content:center;z-index:70;padding:10px;background:#1e1b4b;color:#fff}
+  .gameArea{position:relative;width:100%;height:100%;overflow:hidden;display:flex;align-items:center;justify-content:center;gap:20px;flex-wrap:wrap}
+  .gameBalloon{width:75px;height:100px;border-radius:50% 50% 45% 45%;display:flex;align-items:center;justify-content:center;cursor:pointer;box-shadow: inset -8px -10px 22px rgba(255,255,255,0.2);position:relative}
+  #finalMsg{position:fixed;inset:0;display:none;align-items:center;justify-content:center;z-index:200;flex-direction:column;padding:30px;background:#0f172a;color:#fff}
+  #finalMsg h1{font-size:36px;margin:0;color:#facc15;text-align:center}
 </style>
 </head>
 <body>
-
-<!-- Lock Screen -->
-<div id="lockScreen">
-  <div id="lockCard">
-    <h1 class="lockTitle">Welcome to Arshuman's Birthday</h1>
-    <p style="margin:4px 0 12px;font-size:14px;opacity:0.9;">Enter passcode to unlock the celebration</p>
-    <div class="passRow">
-      <input class="pass" id="p1" maxlength="1" inputmode="numeric" autofocus />
-      <input class="pass" id="p2" maxlength="1" inputmode="numeric" />
-      <input class="pass" id="p3" maxlength="1" inputmode="numeric" />
-      <input class="pass" id="p4" maxlength="1" inputmode="numeric" />
-    </div>
-    <button class="unlockBtn" id="unlockBtn" onclick="checkCode()">Unlock</button>
-    <p id="errMsg" style="font-size:13px;color:#fca5a5;display:none;margin-top:10px;">Wrong passcode! Hint: 1208</p>
-  </div>
-</div>
 
 <!-- Floating balloons background -->
 <div class="balloonBg" id="bgBalloons"></div>
@@ -212,28 +166,8 @@
 </div>
 
 <script>
-  const inputs = document.querySelectorAll('.pass');
-  inputs.forEach((input, index) => {
-    input.addEventListener('input', () => {
-      if (input.value.length === 1 && index < inputs.length - 1) {
-        inputs[index + 1].focus();
-      }
-    });
-  });
-
-  function checkCode() {
-    let code = Array.from(inputs).map(i => i.value).join('');
-    if (code === '1208') {
-      document.getElementById('lockScreen').style.display = 'none';
-      document.getElementById('celebration').style.display = 'flex';
-      createFloatingBalloons();
-    } else {
-      document.getElementById('errMsg').style.display = 'block';
-    }
-  }
-
   function createFloatingBalloons() {
-    const colors = ['#ff477e', '#00b4d8, '#ffb703', '#70e000', '#9d4edd'];
+    const colors = ['#ff477e', '#00b4d8', '#ffb703', '#70e000', '#9d4edd'];
     const container = document.getElementById('bgBalloons');
     for (let i = 0; i < 12; i++) {
       let b = document.createElement('div');
@@ -246,10 +180,7 @@
     }
   }
 
-  function showModal() {
-    document.getElementById('letterModal').style.display = 'flex';
-  }
-
+  function showModal() { document.getElementById('letterModal').style.display = 'flex'; }
   function openCakeScreen() {
     document.getElementById('letterModal').style.display = 'none';
     document.getElementById('celebration').style.display = 'none';
@@ -283,7 +214,6 @@
     let ctx = new (window.AudioContext || window.webkitAudioContext)();
     let notes = [264, 264, 297, 264, 352, 330, 264, 264, 297, 264, 396, 352];
     let times = [0, 0.3, 0.6, 1.0, 1.4, 1.9, 2.4, 2.7, 3.0, 3.4, 3.8, 4.3];
-    
     notes.forEach((freq, idx) => {
       let osc = ctx.createOscillator();
       let gain = ctx.createGain();
@@ -327,6 +257,12 @@
     osc.start();
     osc.stop(ctx.currentTime + 0.08);
   }
+
+  // Show celebration immediately (passcode removed)
+  document.addEventListener('DOMContentLoaded', function () {
+    document.getElementById('celebration').style.display = 'flex';
+    createFloatingBalloons();
+  });
 </script>
 </body>
 </html>
