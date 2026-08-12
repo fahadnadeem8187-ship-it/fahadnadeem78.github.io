@@ -1,0 +1,324 @@
+width=device-width,initial-scale=1" />
+<title>Happy 2nd Birthday Arshuman!</title>
+<style>
+  :root{
+    --bg:#fef7ef;
+    --accent:#ff6b6b;
+    --card:#fff;
+    --muted:#666;
+  }
+  html,body{height:100%;margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,'Helvetica Neue',Arial;}
+  body{
+    background: linear-gradient(180deg,#fffef8 0%, #f8f0ff 100%);
+    overflow:hidden;
+  }
+
+  /* Lock screen */
+  #lockScreen{
+    position:fixed;inset:0;display:flex;align-items:center;justify-content:center;
+    background: linear-gradient(180deg,#93c5fd, #60a5fa);
+    color:white;z-index:100;
+    flex-direction:column;
+  }
+  #lockCard{
+    background: rgba(255,255,255,0.15);backdrop-filter: blur(8px);
+    padding:28px;border-radius:14px;text-align:center;box-shadow:0 8px 30px rgba(0,0,0,0.2);
+    width:320px;
+  }
+  h1.lockTitle{margin:0 0 8px;font-size:20px;letter-spacing:1px}
+  .passRow{display:flex;gap:8px;margin:12px 0;justify-content:center}
+  input.pass{width:56px;height:56px;border-radius:10px;border:none;text-align:center;font-size:24px;outline:none;}
+  button.unlockBtn{
+    background:#fff;color:#2563eb;border:none;padding:10px 16px;border-radius:10px;font-weight:700;
+    cursor:pointer;font-size:16px;
+  }
+
+  /* Celebration page */
+  #celebration{
+    position:fixed;inset:0;display:none;align-items:center;justify-content:center;flex-direction:column;
+    text-align:center;padding:40px;z-index:10;
+  }
+  #bigTitle{
+    font-size:clamp(28px,6vw,64px);font-weight:900;color:#111;
+    text-shadow: 0 6px 18px rgba(0,0,0,0.12);
+    margin:0 0 18px;
+  }
+  #subtitle{font-size:18px;color:var(--muted);margin-bottom:22px}
+  .primaryBtn{
+    background:linear-gradient(90deg,#ff9a9e,#fad0c4);border:none;padding:12px 22px;border-radius:12px;font-weight:700;cursor:pointer;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.12);
+    font-size:18px;color:#111;
+  }
+
+  /* floating balloons background */
+  .balloonBg{position:fixed;inset:0;overflow:hidden;pointer-events:none;z-index:1}
+  .floatBalloon{
+    position:absolute;width:80px;height:110px;border-radius:50% 50% 45% 45%;
+    transform-origin:50% 70%;animation:floatUp linear infinite;
+    display:flex;align-items:center;justify-content:center;
+    box-shadow: inset -8px -10px 22px rgba(255,255,255,0.25);
+  }
+  @keyframes floatUp{from{transform:translateY(100vh) rotate(-8deg)} to{transform:translateY(-30vh) rotate(8deg)}}
+
+  /* Modal Letter */
+  .modal{
+    position:fixed;inset:0;background:rgba(11,15,30,0.55);display:none;align-items:center;justify-content:center;z-index:120;
+  }
+  .card{
+    background:var(--card);padding:26px;border-radius:16px;width:clamp(300px,85%,550px);box-shadow:0 20px 60px rgba(2,6,23,0.2);
+    text-align:left;color:#111;
+  }
+  .card h2{margin-top:0;color:#ff6b6b;}
+  .card p{line-height:1.6;color:#333;font-size:16px;}
+
+  /* Cake area */
+  #cakeScreen{position:fixed;inset:0;display:none;align-items:center;justify-content:center;z-index:50;padding:30px;flex-direction:column}
+  .cakeWrap{position:relative;display:flex;align-items:center;flex-direction:column;gap:12px;}
+  .tier{
+    background:linear-gradient(180deg,#fff,#ffe6d6);border-radius:12px;padding:10px 20px;box-shadow:0 6px 18px rgba(0,0,0,0.12);
+    display:flex;align-items:center;justify-content:center;position:relative;
+  }
+  .tier.small{width:180px;height:70px;border-radius:12px}
+  .tier.large{width:280px;height:100px;border-radius:18px}
+  .icing{position:absolute;left:0;right:0;height:20px;background:linear-gradient(180deg,#fffbf5,#ffeedd);top:0;border-radius:12px 12px 0 0;}
+  
+  .candleRow{display:flex;gap:12px;position:absolute;top:-35px;z-index:10;}
+  .candle{position:relative;width:12px;height:35px;background:linear-gradient(180deg,#ffd89b,#ffb74d);border-radius:3px;cursor:pointer}
+  .flame{
+    position:absolute;top:-16px;left:50%;transform:translateX(-50%);width:12px;height:16px;border-radius:50% 50% 20% 20%;
+    background: radial-gradient(circle at 30% 30%, #fff7a8, #ffcf44 40%, #ff7a18 90%);
+    filter:drop-shadow(0 2px 6px rgba(255,140,30,0.6));animation:flameFlicker 220ms infinite alternate;
+  }
+  @keyframes flameFlicker{0%{transform:translateX(-50%) scaleY(1)}100%{transform:translateX(-50%) scaleY(1.1)}}
+  .flame.out{display:none;}
+
+  .cutBtn{margin-top:18px;background:#fff;border:2px solid #ff7a18;padding:12px 20px;border-radius:12px;font-weight:800;color:#ff4a00;cursor:pointer;display:none;font-size:16px;}
+  .knife{font-size:45px;cursor:pointer;display:none;margin-top:10px;animation:knifeBounce 1s infinite alternate;}
+  @keyframes knifeBounce{0%{transform:translateY(0);} 100%{transform:translateY(-10px);}}
+
+  .lyrics{margin-top:18px;color:#111;background:rgba(255,255,255,0.85);padding:12px 20px;border-radius:10px;display:none;font-weight:700;}
+
+  /* balloon pop game */
+  #balloonGame{position:fixed;inset:0;display:none;align-items:center;justify-content:center;z-index:70;padding:10px;background:#1e1b4b;color:#fff;}
+  .gameArea{position:relative;width:100%;height:100%;overflow:hidden;display:flex;align-items:center;justify-content:center;gap:20px;flex-wrap:wrap;}
+  .gameBalloon{
+    width:75px;height:100px;border-radius:50% 50% 45% 45%;display:flex;align-items:center;justify-content:center;cursor:pointer;
+    box-shadow: inset -8px -10px 22px rgba(255,255,255,0.2);position:relative;
+  }
+  
+  #finalMsg{position:fixed;inset:0;display:none;align-items:center;justify-content:center;z-index:200;flex-direction:column;padding:30px;background:#0f172a;color:#fff;}
+  #finalMsg h1{font-size:36px;margin:0;color:#facc15;text-align:center;}
+</style>
+</head>
+<body>
+
+<!-- Lock Screen -->
+<div id="lockScreen">
+  <div id="lockCard">
+    <h1 class="lockTitle">Welcome to Arshuman's Birthday</h1>
+    <p style="margin:4px 0 12px;font-size:14px;opacity:0.9;">Enter passcode to unlock the celebration</p>
+    <div class="passRow">
+      <input class="pass" id="p1" maxlength="1" inputmode="numeric" autofocus />
+      <input class="pass" id="p2" maxlength="1" inputmode="numeric" />
+      <input class="pass" id="p3" maxlength="1" inputmode="numeric" />
+      <input class="pass" id="p4" maxlength="1" inputmode="numeric" />
+    </div>
+    <button class="unlockBtn" id="unlockBtn" onclick="checkCode()">Unlock</button>
+    <p id="errMsg" style="font-size:13px;color:#fca5a5;display:none;margin-top:10px;">Wrong passcode! Hint: 1208</p>
+  </div>
+</div>
+
+<!-- Floating balloons background -->
+<div class="balloonBg" id="bgBalloons"></div>
+
+<!-- Celebration -->
+<div id="celebration">
+  <div id="bigTitle">HAPPY BIRTHDAY ARSHUMAN!<br/><span style="font-size:0.55em;font-weight:700;color:#ff6b6b;">Our Champ Turns 2 Today!</span></div>
+  <div id="subtitle">Wishing you giggles, cake and endless fun 🎉</div>
+  <button class="primaryBtn" onclick="showModal()">A Special Letter For You 💌</button>
+</div>
+
+<!-- Letter Modal -->
+<div class="modal" id="letterModal">
+  <div class="card">
+    <h2>A Special Letter for Arshuman 💕</h2>
+    <p>My dearest Arshuman,</p>
+    <p>You are our little sunshine, the joy of every day. On your 2nd birthday we wish you a life full of laughter, wonder, and kind friends. May you grow strong, curious, and always feel loved. We promise to cheer you on at every step!</p>
+    <p style="font-weight:800;text-align:right;">Love, Your family ❤️</p>
+    <div style="display:flex;justify-content:flex-end;margin-top:15px">
+      <button class="primaryBtn" onclick="openCakeScreen()">Something More For You 🎂</button>
+    </div>
+  </div>
+</div>
+
+<!-- Cake Screen -->
+<div id="cakeScreen">
+  <div style="text-align:center;margin-bottom:20px">
+    <h2 style="margin:0;font-size:24px;color:#111;">Make a wish and blow out the candles</h2>
+    <p style="margin:6px 0 0;color:#555;">(Click each candle flame to put it out)</p>
+  </div>
+
+  <div class="cakeWrap">
+    <!-- Small Tier -->
+    <div class="tier small">
+      <div class="icing"></div>
+      <div class="candleRow">
+        <div class="candle" onclick="extinguish(this)"><div class="flame"></div></div>
+        <div class="candle" onclick="extinguish(this)"><div class="flame"></div></div>
+        <div class="candle" onclick="extinguish(this)"><div class="flame"></div></div>
+        <div class="candle" onclick="extinguish(this)"><div class="flame"></div></div>
+        <div class="candle" onclick="extinguish(this)"><div class="flame"></div></div>
+        <div class="candle" onclick="extinguish(this)"><div class="flame"></div></div>
+        <div class="candle" onclick="extinguish(this)"><div class="flame"></div></div>
+      </div>
+    </div>
+    <!-- Large Tier -->
+    <div class="tier large">
+      <div class="icing"></div>
+    </div>
+  </div>
+
+  <button class="cutBtn" id="cutBtn" onclick="showKnife()">Time to Cut the Cake! 🔪</button>
+  <div class="knife" id="knife" onclick="cutCake()">🔪 Click Knife to Cut!</div>
+  <div class="lyrics" id="lyrics">🎶 Happy Birthday to You! Happy Birthday Dear Arshuman! 🥳<br><br>
+    <button class="primaryBtn" style="font-size:15px;padding:8px 16px;" onclick="openBalloonGame()">Let's Pop Some Balloons! 🎈</button>
+  </div>
+</div>
+
+<!-- Balloon Pop Game -->
+<div id="balloonGame">
+  <div style="position:absolute;top:30px;text-align:center;">
+    <h2>🎈 Pop All The Balloons!</h2>
+    <p>Click on the balloons to pop them</p>
+  </div>
+  <div class="gameArea">
+    <div class="gameBalloon" style="background:#ff477e;" onclick="popBalloon(this)"></div>
+    <div class="gameBalloon" style="background:#00b4d8;" onclick="popBalloon(this)"></div>
+    <div class="gameBalloon" style="background:#ffb703;" onclick="popBalloon(this)"></div>
+    <div class="gameBalloon" style="background:#70e000;" onclick="popBalloon(this)"></div>
+    <div class="gameBalloon" style="background:#9d4edd;" onclick="popBalloon(this)"></div>
+    <div class="gameBalloon" style="background:#ff70a6;" onclick="popBalloon(this)"></div>
+  </div>
+</div>
+
+<!-- Final Screen -->
+<div id="finalMsg">
+  <h1>🥳 YAY! Happy 2nd Birthday Arshuman! ❤️</h1>
+  <p style="font-size:20px;color:#ddd;margin-top:15px;">You popped all the balloons! Have a blessed day ahead!</p>
+</div>
+
+<script>
+  const inputs = document.querySelectorAll('.pass');
+  inputs.forEach((input, index) => {
+    input.addEventListener('input', () => {
+      if (input.value.length === 1 && index < inputs.length - 1) {
+        inputs[index + 1].focus();
+      }
+    });
+  });
+
+  function checkCode() {
+    let code = Array.from(inputs).map(i => i.value).join('');
+    if (code === '1208') {
+      document.getElementById('lockScreen').style.display = 'none';
+      document.getElementById('celebration').style.display = 'flex';
+      createFloatingBalloons();
+    } else {
+      document.getElementById('errMsg').style.display = 'block';
+    }
+  }
+
+  function createFloatingBalloons() {
+    const colors = ['#ff477e', '#00b4d8', '#ffb703', '#70e000', '#9d4edd'];
+    const container = document.getElementById('bgBalloons');
+    for (let i = 0; i < 12; i++) {
+      let b = document.createElement('div');
+      b.className = 'floatBalloon';
+      b.style.left = Math.random() * 90 + '%';
+      b.style.background = colors[i % colors.length];
+      b.style.animationDuration = (5 + Math.random() * 4) + 's';
+      b.style.animationDelay = (Math.random() * 3) + 's';
+      container.appendChild(b);
+    }
+  }
+
+  function showModal() {
+    document.getElementById('letterModal').style.display = 'flex';
+  }
+
+  function openCakeScreen() {
+    document.getElementById('letterModal').style.display = 'none';
+    document.getElementById('celebration').style.display = 'none';
+    document.getElementById('cakeScreen').style.display = 'flex';
+  }
+
+  let blownOut = 0;
+  function extinguish(candle) {
+    let flame = candle.querySelector('.flame');
+    if (flame && !flame.classList.contains('out')) {
+      flame.classList.add('out');
+      blownOut++;
+      if (blownOut === 7) {
+        document.getElementById('cutBtn').style.display = 'inline-block';
+      }
+    }
+  }
+
+  function showKnife() {
+    document.getElementById('cutBtn').style.display = 'none';
+    document.getElementById('knife').style.display = 'block';
+  }
+
+  function cutCake() {
+    document.getElementById('knife').style.display = 'none';
+    document.getElementById('lyrics').style.display = 'block';
+    playBirthdayAudio();
+  }
+
+  function playBirthdayAudio() {
+    let ctx = new (window.AudioContext || window.webkitAudioContext)();
+    let notes = [264, 264, 297, 264, 352, 330, 264, 264, 297, 264, 396, 352];
+    let times = [0, 0.3, 0.6, 1.0, 1.4, 1.9, 2.4, 2.7, 3.0, 3.4, 3.8, 4.3];
+    
+    notes.forEach((freq, idx) => {
+      let osc = ctx.createOscillator();
+      let gain = ctx.createGain();
+      osc.frequency.value = freq;
+      osc.connect(gain);
+      gain.connect(ctx.destination);
+      osc.start(ctx.currentTime + times[idx]);
+      gain.gain.exponentialRampToValueAtTime(0.00001, ctx.currentTime + times[idx] + 0.3);
+      osc.stop(ctx.currentTime + times[idx] + 0.3);
+    });
+  }
+
+  function openBalloonGame() {
+    document.getElementById('cakeScreen').style.display = 'none';
+    document.getElementById('balloonGame').style.display = 'flex';
+  }
+
+  let poppedCount = 0;
+  function popBalloon(el) {
+    if (el.style.visibility !== 'hidden') {
+      el.style.visibility = 'hidden';
+      playPopSound();
+      poppedCount++;
+      if (poppedCount === 6) {
+        document.getElementById('finalMsg').style.display = 'flex';
+      }
+    }
+  }
+
+  function playPopSound() {
+    let ctx = new (window.AudioContext || window.webkitAudioContext)();
+    let osc = ctx.createOscillator();
+    let gain = ctx.createGain();
+    osc.type = 'triangle';
+    osc.frequency.setValueAtTime(150, ctx.currentTime);
+    osc.frequency.exponentialRampToValueAtTime(40, ctx.currentTime + 0.08);
+    gain.gain.setValueAtTime(1, ctx.currentTime);
+    gain.gain.exponentialRampToValueAtTime(0.01, ctx.currentTime + 0.08);
+    osc.connect(gain);
+    gain.connect(ctx.destination);
+    osc.start();
+    osc.stop(ctx.currentTime + 0.08);
