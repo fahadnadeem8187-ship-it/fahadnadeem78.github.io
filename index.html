@@ -3,15 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Happy Birthday Arshuman!</title>
+  <title>Happy 2nd Birthday Arshuman!</title>
   <style>
-    :root {
-      --bg: #fef7ef;
-      --accent: #ff6b6b;
-      --card: #ffffff;
-      --text: #333333;
-    }
-
     * {
       box-sizing: border-box;
       margin: 0;
@@ -20,207 +13,172 @@
 
     body {
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%);
+      background: #7ca8b8;
       min-height: 100vh;
       display: flex;
       justify-content: center;
       align-items: center;
       padding: 20px;
-      overflow-x: hidden;
-      color: var(--text);
     }
 
-    .container {
-      background: var(--card);
-      max-width: 600px;
+    /* Passcode Screen Overlay */
+    #lock-screen {
+      position: fixed;
+      top: 0;
+      left: 0;
       width: 100%;
-      padding: 40px 30px;
-      border-radius: 20px;
-      box-shadow: 0 15px 35px rgba(0,0,0,0.15);
-      text-align: center;
-      position: relative;
-      z-index: 10;
-      animation: fadeIn 1s ease-in-out;
+      height: 100%;
+      background: #7ca8b8;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 1000;
     }
 
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(20px); }
-      to { opacity: 1; transform: translateY(0); }
+    .lock-box {
+      background: rgba(255, 255, 255, 0.15);
+      backdrop-filter: blur(8px);
+      padding: 30px;
+      border-radius: 16px;
+      text-align: center;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.1);
+      max-width: 350px;
+      width: 90%;
+    }
+
+    .lock-box h2 {
+      color: #334e58;
+      margin-bottom: 8px;
+      font-size: 1.3rem;
+    }
+
+    .lock-box p {
+      color: #4a6772;
+      font-size: 0.85rem;
+      margin-bottom: 20px;
+    }
+
+    .pin-inputs {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      margin-bottom: 20px;
+    }
+
+    .pin-inputs input {
+      width: 45px;
+      height: 50px;
+      text-align: center;
+      font-size: 1.4rem;
+      font-weight: bold;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      background: #e8eaed;
+      color: #333;
+    }
+
+    .unlock-btn {
+      background: #e8eaed;
+      border: 1px solid #b0b0b0;
+      padding: 8px 24px;
+      border-radius: 6px;
+      font-size: 0.95rem;
+      cursor: pointer;
+      color: #333;
+      transition: background 0.3s;
+    }
+
+    .unlock-btn:hover {
+      background: #d0d0d0;
+    }
+
+    /* Main Content */
+    #main-content {
+      display: none;
+      background: #ffffff;
+      max-width: 500px;
+      width: 100%;
+      padding: 30px;
+      border-radius: 24px;
+      text-align: center;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    }
+
+    .party-icon {
+      font-size: 2.5rem;
+      margin-bottom: 10px;
+      animation: bounce 1s infinite;
+    }
+
+    @keyframes bounce {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
     }
 
     h1 {
-      color: var(--accent);
-      font-size: 2.5rem;
+      color: #ff5a5f;
+      font-size: 2rem;
       margin-bottom: 10px;
     }
 
+    .cake-icon {
+      font-size: 2rem;
+      margin: 10px 0;
+    }
+
     p.subtitle {
-      font-size: 1.2rem;
-      color: #666;
-      margin-bottom: 25px;
-    }
-
-    .balloon-container {
-      position: fixed;
-      width: 100%;
-      height: 100%;
-      top: 0;
-      left: 0;
-      pointer-events: none;
-      overflow: hidden;
-      z-index: 1;
-    }
-
-    .balloon {
-      position: absolute;
-      bottom: -100px;
-      width: 50px;
-      height: 65px;
-      background: var(--accent);
-      border-radius: 50% 50% 50% 50% / 40% 40% 60% 60%;
-      animation: floatUp 8s infinite linear;
-      opacity: 0.8;
-    }
-
-    .balloon::after {
-      content: "";
-      position: absolute;
-      bottom: -12px;
-      left: 23px;
-      width: 2px;
-      height: 15px;
-      background: #888;
-    }
-
-    @keyframes floatUp {
-      0% { transform: translateY(0) rotate(0deg); opacity: 0.9; }
-      100% { transform: translateY(-120vh) rotate(20deg); opacity: 0; }
+      color: #555;
+      font-size: 1rem;
+      margin-bottom: 20px;
+      line-height: 1.4;
     }
 
     .card-message {
       background: #fff5f5;
-      border-left: 5px solid var(--accent);
-      padding: 20px;
+      border-left: 4px solid #ff5a5f;
+      padding: 15px;
       border-radius: 8px;
-      margin: 20px 0;
-      font-size: 1.1rem;
-      line-height: 1.6;
       text-align: left;
-    }
-
-    .btn {
-      background: var(--accent);
-      color: white;
-      border: none;
-      padding: 12px 28px;
-      font-size: 1rem;
-      border-radius: 25px;
-      cursor: pointer;
-      font-weight: bold;
-      transition: transform 0.2s, background 0.2s;
-      box-shadow: 0 5px 15px rgba(255,107,107,0.4);
-    }
-
-    .btn:hover {
-      transform: scale(1.05);
-      background: #ff5252;
-    }
-
-    /* Responsive adjustments for small screens */
-    @media (max-width: 480px) {
-      body {
-        padding: 12px;
-      }
-
-      .container {
-        padding: 18px 14px;
-        border-radius: 14px;
-      }
-
-      h1 {
-        font-size: 1.6rem;
-        margin-bottom: 8px;
-      }
-
-      p.subtitle {
-        font-size: 1rem;
-        margin-bottom: 14px;
-      }
-
-      .card-message {
-        font-size: 1rem;
-        padding: 14px;
-        margin: 14px 0;
-      }
-
-      .btn {
-        padding: 10px 18px;
-        font-size: 0.95rem;
-        border-radius: 20px;
-      }
-
-      .balloon {
-        width: 36px;
-        height: 46px;
-      }
-    }
-
-    /* Also scale down when viewport height is small so the card fits vertically */
-    @media (max-height: 700px) {
-      .container {
-        padding: 16px 12px;
-      }
-
-      h1 { font-size: 1.5rem; }
-      p.subtitle { font-size: 0.98rem; }
-      .card-message { font-size: 0.98rem; }
-      .btn { padding: 10px 14px; font-size: 0.9rem; }
+      color: #444;
+      font-size: 0.95rem;
+      line-height: 1.5;
     }
   </style>
 </head>
 <body>
 
-  <div class="balloon-container" id="balloons"></div>
+  <!-- Passcode Lock -->
+  <div id="lock-screen">
+    <div class="lock-box">
+      <h2>Welcome to Arshuman's Birthday</h2>
+      <p>Enter passcode to unlock the celebration</p>
+      <div class="pin-inputs">
+        <input type="text" maxlength="1" value="1" readonly>
+        <input type="text" maxlength="1" value="2" readonly>
+        <input type="text" maxlength="1" value="0" readonly>
+        <input type="text" maxlength="1" value="8" readonly>
+      </div>
+      <button class="unlock-btn" onclick="unlockPage()">Unlock</button>
+    </div>
+  </div>
 
-  <div class="container">
-    <h1>🎉 Happy 2nd Birthday Arshuman! 🎂</h1>
+  <!-- Main Birthday Content -->
+  <div id="main-content">
+    <div class="party-icon">🎉</div>
+    <h1>Happy 2nd Birthday Arshuman!</h1>
+    <div class="cake-icon">🎂</div>
     <p class="subtitle">Wishing you a day filled with joy, laughter, and endless fun!</p>
 
     <div class="card-message">
-      <p>Dear Arshuman,</p>
-      <br>
-      <p>May your special day bring you lots of happiness, sweet treats, and wonderful memories. Keep shining bright and bringing smiles to everyone around you!</p>
-      <br>
-      <p><strong>With lots of love & best wishes! ❤️</strong></p>
+      <p>Dear Arshuman,</p><br>
+      <p>May your special day bring you lots of happiness, sweet treats, and wonderful memories. Keep shining bright!</p>
     </div>
-
-    <button class="btn" onclick="popMoreConfetti()">Celebrate! 🎈</button>
   </div>
 
   <script>
-    // Generate flying balloons
-    const balloonContainer = document.getElementById('balloons');
-    const colors = ['#ff6b6b', '#ffb703', '#4ecdc4', '#1a535c', '#ffe66d', '#ff85a1'];
-
-    function createBalloon() {
-      const balloon = document.createElement('div');
-      balloon.classList.add('balloon');
-      balloon.style.left = Math.random() * 100 + 'vw';
-      balloon.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
-      balloon.style.animationDuration = (Math.random() * 4 + 6) + 's';
-      balloonContainer.appendChild(balloon);
-
-      setTimeout(() => {
-        balloon.remove();
-      }, 10000);
-    }
-
-    setInterval(createBalloon, 600);
-
-    function popMoreConfetti() {
-      for(let i = 0; i < 15; i++) {
-        setTimeout(createBalloon, i * 100);
-      }
+    function unlockPage() {
+      document.getElementById('lock-screen').style.display = 'none';
+      document.getElementById('main-content').style.display = 'block';
     }
   </script>
 </body>
