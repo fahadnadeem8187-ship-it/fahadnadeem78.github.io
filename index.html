@@ -125,6 +125,57 @@
       transform: scale(1.05);
       background: #ff5252;
     }
+
+    /* Responsive adjustments for small screens */
+    @media (max-width: 480px) {
+      body {
+        padding: 12px;
+      }
+
+      .container {
+        padding: 18px 14px;
+        border-radius: 14px;
+      }
+
+      h1 {
+        font-size: 1.6rem;
+        margin-bottom: 8px;
+      }
+
+      p.subtitle {
+        font-size: 1rem;
+        margin-bottom: 14px;
+      }
+
+      .card-message {
+        font-size: 1rem;
+        padding: 14px;
+        margin: 14px 0;
+      }
+
+      .btn {
+        padding: 10px 18px;
+        font-size: 0.95rem;
+        border-radius: 20px;
+      }
+
+      .balloon {
+        width: 36px;
+        height: 46px;
+      }
+    }
+
+    /* Also scale down when viewport height is small so the card fits vertically */
+    @media (max-height: 700px) {
+      .container {
+        padding: 16px 12px;
+      }
+
+      h1 { font-size: 1.5rem; }
+      p.subtitle { font-size: 0.98rem; }
+      .card-message { font-size: 0.98rem; }
+      .btn { padding: 10px 14px; font-size: 0.9rem; }
+    }
   </style>
 </head>
 <body>
