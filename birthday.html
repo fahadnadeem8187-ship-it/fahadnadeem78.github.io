@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Happy 2nd Birthday Arshuman!</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: #7ca8b8;
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+    }
+
+    /* Passcode Screen Overlay */
+    #lock-screen {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: #7ca8b8;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 1000;
+    }
+
+    .lock-box {
+      background: rgba(255, 255, 255, 0.15);
+      backdrop-filter: blur(8px);
+      padding: 30px;
+      border-radius: 16px;
+      text-align: center;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.1);
+      max-width: 350px;
+      width: 90%;
+    }
+
+    .lock-box h2 {
+      color: #334e58;
+      margin-bottom: 8px;
+      font-size: 1.3rem;
+    }
+
+    .lock-box p {
+      color: #4a6772;
+      font-size: 0.85rem;
+      margin-bottom: 20px;
+    }
+
+    .pin-inputs {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      margin-bottom: 20px;
+    }
+
+    .pin-inputs input {
+      width: 45px;
+      height: 50px;
+      text-align: center;
+      font-size: 1.4rem;
+      font-weight: bold;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      background: #e8eaed;
+      color: #333;
+    }
+
+    .unlock-btn {
+      background: #e8eaed;
+      border: 1px solid #b0b0b0;
+      padding: 8px 24px;
+      border-radius: 6px;
+      font-size: 0.95rem;
+      cursor: pointer;
+      color: #333;
+      transition: background 0.3s;
+    }
+
+    .unlock-btn:hover {
+      background: #d0d0d0;
+    }
+
+    /* Main Content */
+    #main-content {
+      display: none;
+      background: #ffffff;
+      max-width: 500px;
+      width: 100%;
+      padding: 30px;
+      border-radius: 24px;
+      text-align: center;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    }
+
+    .party-icon {
+      font-size: 2.5rem;
+      margin-bottom: 10px;
+      animation: bounce 1s infinite;
+    }
+
+    @keyframes bounce {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+    }
+
+    h1 {
+      color: #ff5a5f;
+      font-size: 2rem;
+      margin-bottom: 10px;
+    }
+
+    .cake-icon {
+      font-size: 2rem;
+      margin: 10px 0;
+    }
+
+    p.subtitle {
+      color: #555;
+      font-size: 1rem;
+      margin-bottom: 20px;
+      line-height: 1.4;
+    }
+
+    .card-message {
+      background: #fff5f5;
+      border-left: 4px solid #ff5a5f;
+      padding: 15px;
+      border-radius: 8px;
+      text-align: left;
+      color: #444;
+      font-size: 0.95rem;
+      line-height: 1.5;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Passcode Lock -->
+  <div id="lock-screen">
+    <div class="lock-box">
+      <h2>Welcome to Arshuman's Birthday</h2>
+      <p>Enter passcode to unlock the celebration</p>
+      <div class="pin-inputs">
+        <input type="text" maxlength="1" value="1" readonly>
+        <input type="text" maxlength="1" value="2" readonly>
+        <input type="text" maxlength="1" value="0" readonly>
+        <input type="text" maxlength="1" value="8" readonly>
+      </div>
+      <button class="unlock-btn" onclick="unlockPage()">Unlock</button>
+    </div>
+  </div>
+
+  <!-- Main Birthday Content -->
+  <div id="main-content">
+    <div class="party-icon">🎉</div>
+    <h1>Happy 2nd Birthday Arshuman!</h1>
+    <div class="cake-icon">🎂</div>
+    <p class="subtitle">Wishing you a day filled with joy, laughter, and endless fun!</p>
+
+    <div class="card-message">
+      <p>Dear Arshuman,</p><br>
+      <p>May your special day bring you lots of happiness, sweet treats, and wonderful memories. Keep shining bright!</p>
+    </div>
+  </div>
+
+  <script>
+    function unlockPage() {
+      document.getElementById('lock-screen').style.display = 'none';
+      document.getElementById('main-content').style.display = 'block';
+    }
+  </script>
+</body>
+</html>
